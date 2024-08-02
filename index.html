@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto 1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center h-screen bg-gray-100 p-4">
+
+    <div class="bg-white p-6 shadow-lg rounded-lg max-x-sm w-full">
+        <div id="resultado" class="bg-gray-200 p-4 text-2xl mb-4 h-16 flex items-center justify-end">0</div>  
+        <div class="grid grid-cols-4 gap-2">
+                 
+            <button class="bg-gray-300 p-4 rounded text-xl" onclick="addNumero('7')">7</button>
+            <button class="bg-gray-300 p-4 rounded text-xl" onclick="addNumero('8')" >8</button>
+            <button class="bg-gray-300 p-4 rounded text-xl "onclick="addNumero('9')">9</button>
+            <button class="bg-orange-500 p-4 rounded text-xl text-white"onclick="setoperacion('/')">/</button>
+
+            <button class="bg-gray-300 p-4 rounded text-xl"onclick="addNumero('4')">4</button>
+            <button class="bg-gray-300 p-4 rounded text-xl"onclick="addNumero('5')">5</button>
+            <button class="bg-gray-300 p-4 rounded text-xl"onclick="addNumero('6')">6</button>
+            <button class="bg-orange-500 p-4 rounded text-xl text-white"onclick="setoperacion('*')">*</button>
+
+            <button class="bg-gray-300 p-4 rounded text-xl"onclick="addNumero('1')">1</button>
+            <button class="bg-gray-300 p-4 rounded text-xl"onclick="addNumero('2')">2</button>
+            <button class="bg-gray-300 p-4 rounded text-xl"onclick="addNumero('3')">3</button>
+            <button class="bg-orange-500 p-4 rounded text-xl text-white"onclick="setoperacion('-')">-</button>
+
+            <button class="bg-gray-300 p-4 rounded text-xl col-span-2"onclick="addNumero('0')">0</button>
+            <button class="bg-gray-300 p-4 rounded text-xl">.</button>
+            <button class="bg-orange-500 p-4 rounded text-xl text-white"onclick="setoperacion('+')">+</button>
+            
+            
+        </div>
+        <button class="bg-blue-500 p-4 rounded text-xl mt-2 text-white w-full"onclick="calculartotal()">=</button>
+        <button class="bg-red-500 p-4 rounded text-xl mt-2 text-white w-full"onclick="limpiar()">C</button>
+    </div>
+    <script>
+        var valor_respuesta='';
+        let operacion_actual="";
+        let valor_previo='';
+        //funciones de java scripts
+        function addNumero(numero){
+            valor_respuesta=valor_respuesta+numero;
+            document.getElementById("resultado").innerText=valor_respuesta;
+
+        }
+        function limpiar(){
+            var valor_respuesta='';
+            document.getElementById('resultado').innerText=0;
+        }
+        function setoperacion(operacion){
+            valor_previo=valor_respuesta;
+            operacion_actual=operacion;
+            valor_respuesta="";
+        }
+        function calculartotal(){
+            let resultado;
+            let num1=parseFloat(valor_respuesta);
+            let num2=parseFloat(valor_previo);
+
+            if(operacion_actual == '+'){
+                resultado=num1+num2;
+            } else if(operacion_actual == '*'){
+                resultado=num1*num2;
+            }
+            else if(operacion_actual =='/'){
+                resultado=num2/num1;
+            }
+            else if(operacion_actual == '-'){
+                resultado=num1-num2;
+            }
+            else {
+                resultado='0';
+            }
+            
+            document.getElementById('resultado').innerText=resultado;
+            valor_respuesta=resultado.toString();
+
+        }
+    </script>
+    
+</body>
+</html>
