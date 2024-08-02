@@ -47,7 +47,7 @@
 
         }
         function limpiar(){
-            var valor_respuesta='';
+             valor_respuesta='';
             document.getElementById('resultado').innerText=0;
         }
         function setoperacion(operacion){
@@ -55,30 +55,33 @@
             operacion_actual=operacion;
             valor_respuesta="";
         }
-        function calculartotal(){
-            let resultado;
-            let num1=parseFloat(valor_respuesta);
-            let num2=parseFloat(valor_previo);
+       function calculartotal() {
+    let resultado;
+    let num1 = parseFloat(valor_respuesta);
+    let num2 = parseFloat(valor_previo);
 
-            if(operacion_actual == '+'){
-                resultado=num1+num2;
-            } else if(operacion_actual == '*'){
-                resultado=num1*num2;
-            }
-            else if(operacion_actual =='/'){
-                resultado=num2/num1;
-            }
-            else if(operacion_actual == '-'){
-                resultado=num1-num2;
-            }
-            else {
-                resultado='0';
-            }
-            
-            document.getElementById('resultado').innerText=resultado;
-            valor_respuesta=resultado.toString();
+ 
 
+    if (operacion_actual == '+') {
+        resultado = num1 + num2;
+    } else if (operacion_actual == '*') {
+        resultado = num1 * num2;
+    } else if (operacion_actual == '/') {
+        if (num1 === 0) {
+            alert('No se puede dividir entre 0');
+            return;
+        } else {
+            resultado = num2 / num1;
         }
+    } else if (operacion_actual == '-') {
+        resultado = num1 - num2;
+    } else {
+        resultado = '0';
+    }
+
+    document.getElementById('resultado').innerText = resultado;
+    valor_respuesta = resultado.toString();
+}
     </script>
     
 </body>
